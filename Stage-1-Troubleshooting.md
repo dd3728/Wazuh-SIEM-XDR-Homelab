@@ -42,8 +42,9 @@ Status → System Logs → Settings
 ### 2. Wazuh Syslog Listener Configuration
 
 **File:**
-
+```
 /var/ossec/etc/ossec.conf
+```
 
 **Configured:**
 ```xml
@@ -54,48 +55,58 @@ Status → System Logs → Settings
   <allowed-ips>192.168.60.1</allowed-ips>
 </remote>
 
+```
 ---
 
 ### 3. Enabled Full Log Storage
-
+```
+xml
 <logall>yes</logall>
 <logall_json>yes</logall_json>
+```
 
 ---
 
 ### 4. Decoder Implementation
 
 File:
-
+```
+</> Bash
 /var/ossec/etc/decoders/local_decoder.xml
+```
 
 Final working configuration:
-
+```
+xml
 <decoder name="pfsense">
   <program_name>filterlog</program_name>
 </decoder>
+```
 
 ---
 
 ### 5. Custom Rule
 
 File:
-
+```
+</> Bash
 /var/ossec/etc/rules/local_rules.xml
-
+```
+```
 <group name="pfsense,syslog,">
   <rule id="100100" level="5">
     <decoded_as>pfsense</decoded_as>
     <description>pfSense firewall log detected</description>
   </rule>
 </group>
-
+```
 ---
 
 ### 6. Validation Steps | Network-Level Validation
-
+```
+</> Bash
 tcpdump -A -i any port 5514
-
+```
 Result:
 
 Confirmed presence of filterlog entries
@@ -104,23 +115,25 @@ Verified pfSense → Wazuh connectivity
 ---
 
 ### 7. Service Validation
-
+```
 </> Bash
 lsof -i :5514
-
+```
 Result:
 
-Wazuh listening on UDP port 5514
+Wazuh listening on UDP `port 5514`
 
 ---
 
 ### 8. Log Pipeline Validation
-
+```
 </> Bash
 tail -f /var/ossec/logs/archives/archives.log
-
+```
+```
 </> Bash
 tail -f /var/ossec/logs/alerts/alerts.log
+```
 
 ### ✅Successfully Achieved
 
@@ -144,16 +157,17 @@ tail -f /var/ossec/logs/alerts/alerts.log
 ### Current State in Dashboard
 
 ●Only the following logs are visible:
-
+```
 Windows Security Events ✅
 Agent-based logs ✅
+```
 
 Missing:
-
+```
 filterlog ❌
 Suricata ❌
 pfBlockerNG ❌
-
+```
 ---
 ## Technical Analysis
 Key Finding
@@ -164,7 +178,7 @@ Even though:
 ●Wazuh is listening and receiving traffic
 ●Decoder and rules are present
 
-[No alerts are generated]
+`[No alerts are generated]`
 
 ---
 ## Interpretation

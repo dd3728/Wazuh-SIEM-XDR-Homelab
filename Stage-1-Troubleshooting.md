@@ -175,7 +175,9 @@ Key Finding
 Even though:
 
 ●pfSense logs are confirmed via tcpdump
+
 ●Wazuh is listening and receiving traffic
+
 ●Decoder and rules are present
 
 `[No alerts are generated]`
@@ -190,8 +192,11 @@ This indicates:
 Possible reasons:
 
 1.Logs are not fully parsed beyond program_name
+
 2.No field extraction (src_ip, dst_ip, action)
+
 3.Rule matching is too generic
+
 4.Log format incompatibility with Wazuh parsing engine
 
 ---
@@ -206,9 +211,13 @@ Wazuh does not behave as a traditional SIEM:
 ## Lessons Learned
 
 ●SIEM ingestion ≠ detection
+
 ●Network visibility does not guarantee indexing
+
 ●Wazuh depends heavily on decoders and rules
+
 ●Regex limitations can break configurations entirely
+
 ●Structured fields (program_name) are more reliable than regex
 
 ---
@@ -217,8 +226,11 @@ Wazuh does not behave as a traditional SIEM:
 This stage successfully demonstrated:
 
 ●End-to-end syslog transport validation
+
 ●Wazuh ingestion configuration
+
 ●Decoder and rule development
+
 ●Systematic troubleshooting methodology
 
 However:

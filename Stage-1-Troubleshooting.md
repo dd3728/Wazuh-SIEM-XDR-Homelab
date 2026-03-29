@@ -205,6 +205,7 @@ Possible reasons:
 Wazuh does not behave as a traditional SIEM:
 
 ●It does not index raw syslog automatically
+
 ●It requires successful decoding + rule matching to generate alerts
 
 ---

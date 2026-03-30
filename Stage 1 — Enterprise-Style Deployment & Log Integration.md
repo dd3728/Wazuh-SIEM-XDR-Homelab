@@ -1,7 +1,15 @@
 ## Wazuh SIEM/XDR Homelab
 ---
 
-Stage 1 — Enterprise-Style Deployment & Log Integration
+**Stage 1 — Enterprise-Style Deployment & Log Integration**
+
+NOTE,
+
+*pfSense → Wazuh Syslog Integration (Troubleshooting & Analysis Report)*
+
+LINK:
+https://github.com/dd3728/Wazuh-SIEM-XDR-Homelab/blob/7ffb6b7c937f6da3fb938038aa86038cd636e7f9/Stage-1-Troubleshooting.md
+
 
 ## Executive Summary
 ---
@@ -20,7 +28,7 @@ This project demonstrates the end-to-end deployment of a SIEM/XDR platform in a 
 
 -Validate centralized log ingestion and visibility
 
-*This is not a basic lab — it reflects real-world SOC architecture and workflows.*
+*This lab — it reflects real-world SOC architecture and workflows.*
 
 ## Architecture Overview
 
@@ -62,7 +70,6 @@ This project demonstrates the end-to-end deployment of a SIEM/XDR platform in a 
 ---
                 
 ## Infrastructure Inventory
----
 
 **Asset	Role	Key Function:**
 
@@ -76,8 +83,9 @@ This project demonstrates the end-to-end deployment of a SIEM/XDR platform in a 
 
 -Kali Linux	Attacker Machine	Adversary simulation
 
-## Security Stack (Defense-in-Depth)
+
 ---
+## Security Stack (Defense-in-Depth)
 
 **Layer	Tool	Purpose:**
 
@@ -91,8 +99,10 @@ This project demonstrates the end-to-end deployment of a SIEM/XDR platform in a 
 
 -SIEM/XDR	Wazuh	➡️ Centralized analysis
 
-## Wazuh Deployment
+
 ---
+## Wazuh Deployment
+
 
 **Deployment Model**
 
@@ -100,6 +110,15 @@ This project demonstrates the end-to-end deployment of a SIEM/XDR platform in a 
 
 -Installed on Ubuntu Server 24.04 LTS
 
+## Demonstration🎥
+<div>
+    <img src="https://img.shields.io/badge/-YouTube-FF0000?&style=for-the-badge&logo=YouTube&logoColor=white" />
+</div>
+
+📌 https://youtu.be/m-f8DKKRDrY?si=mylpNxtyqxZI16Zf
+
+
+---
 **Key Actions**
 
 -Installed Wazuh via official quickstart
@@ -118,8 +137,9 @@ This project demonstrates the end-to-end deployment of a SIEM/XDR platform in a 
 
 *Accessed dashboard successfully*
 
-## Endpoint Onboarding
+
 ---
+## Endpoint Onboarding
 
 **Systems Integrated**
 
@@ -137,8 +157,9 @@ This project demonstrates the end-to-end deployment of a SIEM/XDR platform in a 
 
 -System inventory visible
 
-## Validation Results
+
 ---
+## Validation Results
 
 ✅Agents reporting to Wazuh
 
@@ -148,18 +169,33 @@ This project demonstrates the end-to-end deployment of a SIEM/XDR platform in a 
 
 ✅SIEM dashboard operational
 
+## Demonstration🎥
+<div>
+    <img src="https://img.shields.io/badge/-YouTube-FF0000?&style=for-the-badge&logo=YouTube&logoColor=white" />
+</div>
+
+📌 https://youtu.be/ersRv7b32Zk?si=KeCQatPgMo5FiqKx
+
+
 🔗 Network Log Integration (Critical Capability)
 
-## Objective
----
 
-**Ingest logs from:**
+---
+## Objective
+
+**is to Ingest logs from:**
 
 -Firewall (pfSense)
 
 -IDS/IPS (Snort / Suricata)
 
 -Threat Intelligence (pfBlockerNG)
+
+**NOTE, I ENCOUNTERED ISSUES TRYING TO INGEST LOGS TO WAZUH SERVER WHICH I EXPLAINED AND DEMOSTRATED UNDER STAGE-1-TROUBLESHOOTING**
+
+LINK:
+
+https://github.com/dd3728/Wazuh-SIEM-XDR-Homelab/blob/7ffb6b7c937f6da3fb938038aa86038cd636e7f9/Stage-1-Troubleshooting.md
 
 **Implementation Summary**
 
@@ -168,12 +204,12 @@ This project demonstrates the end-to-end deployment of a SIEM/XDR platform in a 
 ✅Enabled remote syslog forwarding
 
 **Sent logs to:**
-
-<*192.168.60.50:514*>
+```
+<*192.168.60.50:5514*>
+```
 
 ## Wazuh Configuration**
----
-
+```
 $*bash*
 
 path$ /var/ossec/etc/ossec.conf
@@ -184,38 +220,20 @@ path$ /var/ossec/etc/ossec.conf
   
   connection>syslog</connection
   
-  port>514</port
+  port>5514</port
   
   protocol>udp</protocol
   
   allowed-ips>192.168.60.1</allowed-ips
   
 </remote
-
-**IDS/IPS Logging**
-
-Snort → System logs
-
-Suricata → Syslog + EVE JSON
-
-## Outcome
----
-
-The SIEM now ingests:
-
--Firewall traffic (allow/deny)
-
--IDS alerts (intrusion attempts)
-
--Threat intelligence blocks
-
--Endpoint logs (Windows + Linux)
-
+```
 
 ➡️ *This enables correlation between network and endpoint activity, which is essential in real SOC environments.*
 
-## Key Skills Demonstrated
+
 ---
+## Key Skills Demonstrated
 
 **SIEM Engineering**
 
@@ -249,8 +267,10 @@ The SIEM now ingests:
 
 -Log flow validation
 
-## What Makes This Project Stand Out
+
+
 ---
+## What Makes This Project Stand Out
 
 🔴*Not tool-focused — architecture-focused*
 
@@ -266,27 +286,13 @@ The SIEM now ingests:
 
 Designed for attack simulation (next stage)
 
-## Demonstration🎥
 
-📌 [Insert Video Walkthrough Here]
-
-## Evidence 📷
-
-📌 [Insert Wazuh Dashboard Screenshot]
-
-📌 [Insert Agent Deployment Screenshot]
-
-📌 [Insert Log Search Screenshot]
-
-
-## Lessons Learned
 ---
+## Lessons Learned
 
 -SIEM value depends on data quality and integration, not just installation
 
 -Network logs + endpoint logs together provide true visibility
-
--Default configurations are not enough — tuning is required
 
 -Centralized logging is the foundation for threat detection
 

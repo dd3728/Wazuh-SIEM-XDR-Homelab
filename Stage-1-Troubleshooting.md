@@ -123,6 +123,13 @@ Result:
 
 Wazuh listening on UDP `port 5514`
 
+## Demonstration🎥
+<div>
+    <img src="https://img.shields.io/badge/-YouTube-FF0000?&style=for-the-badge&logo=YouTube&logoColor=white" />
+</div>
+
+📌 https://youtu.be/iuVotAPh4m4?si=Y6SQADH3k6-deRLO
+
 ---
 
 ### 8. Log Pipeline Validation
@@ -185,7 +192,7 @@ Even though:
 ---
 ## Interpretation
 
-This indicates:
+I think this indicates:
 
 ●Wazuh receives syslog traffic but does not process it into alerts.
 
@@ -202,7 +209,7 @@ Possible reasons:
 ---
 ## Important Observation
 
-Wazuh does not behave as a traditional SIEM:
+What I noticed is that Wazuh does not behave as a traditional SIEM:
 
 ●It does not index raw syslog automatically
 
@@ -237,3 +244,11 @@ This stage successfully demonstrated:
 However:
 
 ●pfSense logs were not successfully transformed into alerts or indexed data.
+
+
+## Demonstration🎥
+<div>
+    <img src="https://img.shields.io/badge/-YouTube-FF0000?&style=for-the-badge&logo=YouTube&logoColor=white" />
+</div>
+
+📌 https://youtu.be/iuVotAPh4m4?si=Y6SQADH3k6-deRLO
